@@ -27,6 +27,11 @@ application.use('/components', express.static(FRONTEND_PATH + '/components'));
 application.use('/images', express.static(FRONTEND_PATH + '/images'));
 application.use('/js', express.static(FRONTEND_PATH + '/js'));
 
+application.use('/bower_components', express.static(FRONTEND_PATH + '/bower_components'));
+application.use('/pad', express.static(FRONTEND_PATH + '/pad'));
+application.use('/common', express.static(FRONTEND_PATH + '/common'));
+application.use('/customize', express.static(path.join(FRONTEND_PATH, '../customize.dist')));
+
 var bodyParser = require('body-parser');
 application.use(bodyParser.json());
 application.use(bodyParser.urlencoded({

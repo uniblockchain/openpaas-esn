@@ -40,3 +40,5 @@ async.series([core.templates.inject, fireESNState('lib'), initCore, fireESNState
   }
   logger.info('OpenPaas ESN is now started on node %s', process.version);
 });
+
+require("./realtime-server");

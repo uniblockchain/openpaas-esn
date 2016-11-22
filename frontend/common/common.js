@@ -1,9 +1,8 @@
 define([
-    '/api/config?cb=' + Math.random().toString(16).slice(2),
     '/customize/messages.js',
     '/bower_components/chainpad-crypto/crypto.js',
     '/bower_components/jquery/dist/jquery.min.js',
-], function (Config, Messages, Crypto) {
+], function (Messages, Crypto) {
 /*  This file exposes functionality which is specific to Cryptpad, but not to
     any particular pad type. This includes functions for committing metadata
     about pads to your local storage for future use and improved usability.
@@ -17,15 +16,7 @@ define([
     };
 
     var getWebsocketURL = common.getWebsocketURL = function () {
-        if (!Config.websocketPath) { return Config.websocketURL; }
-        var path = Config.websocketPath;
-        if (/^ws{1,2}:\/\//.test(path)) { return path; }
-
-        var protocol = window.location.protocol.replace(/http/, 'ws');
-        var host = window.location.host;
-        var url = protocol + '//' + host + path;
-
-        return url;
+        return 'ws://' + window.location.host + ':3000/cryptpad_websocket';
     };
 
     var isArray = function (o) { return Object.prototype.toString.call(o) === '[object Array]'; };
